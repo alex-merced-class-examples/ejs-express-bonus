@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs", {title: "Main Page"}) %>
+
+  <body>
+    <div class="div">
+        <%- createMarkup(color) %>
+    </div>
+
+    <style>
+        .div {
+            border: 3px solid green;
+        }
+    </style>
+  </body>
+</html>

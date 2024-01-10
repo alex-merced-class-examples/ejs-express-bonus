@@ -10,6 +10,7 @@ const connectMongo = require("connect-mongo"); // middleware for storing session
 
 // Import Routers
 const sampleRouter = require("./controllers/sample");
+const pokemonRouter = require("./controllers/pokemon")
 
 // get PORT, DATABASE_URL and SECRET variables from .env
 const { PORT = 3000, DATABASE_URL, SECRET = "default" } = process.env;
@@ -34,11 +35,34 @@ app.use(
 
 // Register Routes
 app.use("/samples", sampleRouter);
+app.use("/pokemon", pokemonRouter)
 
 // main route for "/" (all other routes should be handled by routers)
 app.get("/", (req, res) => {
   res.render("index.ejs");
 });
+
+app.get("/customelements", (req, res) => {
+  res.render("customelements.ejs")
+})
+
+app.get("/advancedejs", (req, res) => {
+
+  // req.query = url query params ?cheese=gouda
+  const color = req.query.color || "blue"
+
+  const createMarkup = (color) => {
+    if(color === "green"){
+      return "<h1>Green</h1>"
+    }
+
+    if(color === "red"){
+      return "<h1>Red</h1>"
+  R }
+  }
+
+  res.render("advancedejs.ejs", {color, createMarkup})
+})
 
 // turn on server
 app.listen(PORT, () => {
