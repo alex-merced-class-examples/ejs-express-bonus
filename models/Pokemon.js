@@ -1,27 +1,20 @@
-const originalPokemon = require("./pokedex.json");
+// THIS IS A SAMPLE MODEL FILE
 
-const pokemon = originalPokemon.pokemon.map((p) => {
-  // given p = the original pokemon
-  return {
-    name: p.name,
-    num: p.num,
-    img: p.img,
-    type: p.type,
-  };
-});
+// Import Connection
+const mongoose = require("./connection");
 
-const Pokemon = {
-    getAll: () => {return pokemon},
-    getOne: (id) => {return pokemon[id]},
-    createOne: (newPoke) => {
-        pokemon.push(newPoke)
-    },
-    update: (id, updatedPoke) => {
-        pokemon[id] = updatedPoke
-    },
-    delete: (id) => {
-        pokemon.splice(id, 1)
-    }
-}
+// Create a Schema
+const pokemonSchema = new mongoose.Schema(
+  {
+    name: String,
+    img: String,
+    username: String
+  },
+  { timestamps: true }
+);
 
+// Create the Model Object
+const Pokemon = mongoose.model("Pokemon", pokemonSchema)
+
+// export the Model
 module.exports = Pokemon

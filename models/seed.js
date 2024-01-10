@@ -5,22 +5,25 @@
 const mongoose = require("./connection.js");
 
 // Import Models
-const Sample = require("./Sample.js");
+const Pokemon = require("./Pokemon.js")
+const pokedex = require("./pokedex.json")
 
 // Delay Seed Code Till Connection Opens with Connection Event
 mongoose.connection.on("open", async () => {
   // seed code should be inside this function
 
-  // clear the collection
-  await Sample.deleteMany({});
+  const pokemonToCreate = pokedex.pokemon.map((p) => {
+    return {
+      name: p.name,
+      img: p.img,
+      username: "user1"
+    }
+  })
 
-  // add seed data
-  const samples = await Sample.create([
-    { prop1: "a", prop2: "b" },
-    { prop1: "c", prop2: "d" },
-    { prop1: "e", prop2: "f" },
-  ]);
+  const createdPokemon = await Pokemon.create(pokemonToCreate)
+
+  
 
   // log to confirm it was created
-  console.log(samples);
+  console.log(createdPokemon[0])
 });

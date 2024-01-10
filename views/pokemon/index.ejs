@@ -8,7 +8,7 @@
       <left-screen>
         <% pokemon.forEach((p, i) => { %>
 
-        <pokemon-listing data-index="<%= i %>">
+        <pokemon-listing data-index="<%= p._id %>">
           <h3><%= p.name %></h3>
           <img src="<%= p.img %>" />
         </pokemon-listing>

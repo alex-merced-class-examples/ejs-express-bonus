@@ -11,6 +11,7 @@ const connectMongo = require("connect-mongo"); // middleware for storing session
 // Import Routers
 const sampleRouter = require("./controllers/sample");
 const pokemonRouter = require("./controllers/pokemon")
+const userRouter = require("./controllers/user")
 
 // get PORT, DATABASE_URL and SECRET variables from .env
 const { PORT = 3000, DATABASE_URL, SECRET = "default" } = process.env;
@@ -35,7 +36,8 @@ app.use(
 
 // Register Routes
 app.use("/samples", sampleRouter);
-app.use("/pokemon", pokemonRouter)
+app.use("/pokemon", pokemonRouter);
+app.use("/auth", userRouter)
 
 // main route for "/" (all other routes should be handled by routers)
 app.get("/", (req, res) => {
