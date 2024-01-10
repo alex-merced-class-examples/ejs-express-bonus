@@ -17,6 +17,10 @@ $pokemonList.on("click", (event) => {
             <h3>${data.name}</h3>
             <img src="${data.img}">
             <p>Type: ${data.type}</p>
+            <a href="/pokemon/${id}/edit"><button>Edit</button></a>
+            <form action="/pokemon/${id}?_method=DELETE" method="post">
+            <button>Delete</button>
+            </form>
         
         </div>`)
 

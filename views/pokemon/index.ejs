@@ -3,6 +3,7 @@
   <%- include("../partials/head.ejs", {title: "Samples Index Page"}) %>
 
   <body>
+    <%- include("../partials/header.ejs", {xpage: false})%>
     <poke-dex>
       <left-screen>
         <% pokemon.forEach((p, i) => { %>
@@ -48,6 +49,14 @@
       pokemon-listing {
         display: block;
       }
+
+      right-screen {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+
     </style>
   </body>
 </html>
