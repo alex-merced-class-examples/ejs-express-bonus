@@ -13,4 +13,9 @@ router.get("/", (req, res) => {
     res.render("pokemon/index.ejs", {pokemon})
 })
 
+router.get("/:id", (req, res) => {
+    const id = parseInt(req.params.id)
+    res.json(Pokemon.getOne(id))
+})
+
 module.exports = router;
